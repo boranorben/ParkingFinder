@@ -13,14 +13,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun firstBldgBtnClicked(view: View) {
-        val intent = Intent(this, FloorActivity::class.java)
-        intent.putExtra("BuildingNumber", 1.toString())
-        startActivity(intent)
+        newActivity(1)
     }
 
     fun secondBldgClicked(view: View) {
+        newActivity(2)
+    }
+
+    private fun newActivity(buildingNum: Int) {
         val intent = Intent(this, FloorActivity::class.java)
-        intent.putExtra("BuildingNumber", 2.toString())
+        intent.putExtra("buildingNumber", buildingNum.toString())
         startActivity(intent)
     }
 
