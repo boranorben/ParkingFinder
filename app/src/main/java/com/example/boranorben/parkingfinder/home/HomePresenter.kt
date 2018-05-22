@@ -1,22 +1,38 @@
 package com.example.boranorben.parkingfinder.home
 
-import com.example.boranorben.parkingfinder.ActivityView
+class HomePresenter(val view: BuildingView) {
+    lateinit var building1: Building
+    lateinit var building2: Building
+    var buildingNum: Int = 0
 
-class HomePresenter(val view: ActivityView) {
-    var building: Int = 0;
+    fun start() {
+        building1 = Building(1, "1ST Building")
+        building2 = Building(2, "2ND Building")
+        showFirstBldgSlots()
+        showSecondBldgSlots()
+    }
 
     fun onFirstBldgBtnClicked() {
-        building = 1;
+        buildingNum = 1;
         setBuilding()
     }
 
     fun onSecondBldgBtnClicked() {
-        building = 2;
+        buildingNum = 2;
         setBuilding()
     }
 
     fun setBuilding() {
-        view.navigateToNextAct(building);
+        view.navigateToNextAct(buildingNum);
     }
 
+    fun showFirstBldgSlots() {
+        var string: String = building1.getName() + ": " + building1.getCount()
+        view.showFirstBldgEmptySlots(string)
+    }
+
+    fun showSecondBldgSlots() {
+        var string: String = building2.getName() + ": " + building2.getCount()
+        view.showSecondBldgEmptySlots(string)
+    }
 }

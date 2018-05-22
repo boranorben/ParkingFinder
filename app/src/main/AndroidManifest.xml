@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".floor.FloorActivity" />
-        <activity android:name=".SlotsActivity"></activity>
+        <activity android:name=".slots.SlotsActivity"></activity>
     </application>
 
 </manifest>

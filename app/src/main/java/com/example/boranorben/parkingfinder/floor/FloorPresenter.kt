@@ -1,31 +1,30 @@
 package com.example.boranorben.parkingfinder.floor
 
-import com.example.boranorben.parkingfinder.ActivityView
-
-class FloorPresenter(val view: ActivityView) {
-    var floor: Int = 0
+class FloorPresenter(val view: FloorView) {
+    lateinit var floor: Floor
+    var floorNum: Int = 0
 
     fun onFirstFlrBtnClicked() {
-        floor = 1
+        floorNum = 1
         setFloor()
     }
 
     fun onSecondFlrBtnClicked() {
-        floor = 2
+        floorNum = 2
         setFloor()
     }
 
     fun onThirdFlrBtnClicked() {
-        floor = 3
+        floorNum = 3
         setFloor()
     }
 
     fun onForthFlrBtnClicked() {
-        floor = 4
+        floorNum = 4
         setFloor()
     }
 
     fun setFloor() {
-        view.navigateToNextAct(floor)
+        view.navigateToNextAct(floorNum)
     }
 }

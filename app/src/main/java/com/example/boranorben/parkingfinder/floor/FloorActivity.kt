@@ -4,13 +4,14 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.example.boranorben.parkingfinder.ActivityView
+import com.example.boranorben.parkingfinder.home.BuildingView
 import com.example.boranorben.parkingfinder.R
-import com.example.boranorben.parkingfinder.SlotsActivity
+import com.example.boranorben.parkingfinder.slots.SlotsActivity
 import kotlinx.android.synthetic.main.activity_floor.*
 
-class FloorActivity : AppCompatActivity(), ActivityView {
+class FloorActivity : AppCompatActivity(), FloorView {
     lateinit var presenter: FloorPresenter
+    var buildingNum: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,12 +38,16 @@ class FloorActivity : AppCompatActivity(), ActivityView {
 
     fun displayBuilding() {
         val building: String = intent.getStringExtra("buildingNumber")
+        buildingNum = building
         bldgNumber.text = "Building: " + building
     }
 
     override fun navigateToNextAct(value: Int) {
         val intent = Intent(this, SlotsActivity::class.java)
-        intent.putExtra("floorNumber", value.toString())
+        val extras = Bundle()
+        extras.putString("buildingNumber", buildingNum)
+        extras.putString("floorNumber", value.toString())
+        intent.putExtras(extras)
         startActivity(intent)
     }
 
