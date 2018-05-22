@@ -1,13 +1,15 @@
 package com.example.boranorben.parkingfinder.home
 
 class HomePresenter(val view: BuildingView) {
-    lateinit var building1: Building
-    lateinit var building2: Building
+    private var buildingSize = 2
+    lateinit var buildings: ArrayList<Building>
     var buildingNum: Int = 0
 
     fun start() {
-        building1 = Building(1, "1ST Building")
-        building2 = Building(2, "2ND Building")
+        buildings = ArrayList()
+        for (i in 1..buildingSize) {
+            buildings.add(Building(i))
+        }
         showFirstBldgSlots()
         showSecondBldgSlots()
     }
@@ -27,12 +29,12 @@ class HomePresenter(val view: BuildingView) {
     }
 
     fun showFirstBldgSlots() {
-        var string: String = building1.getName() + ": " + building1.getCount()
+        var string: String = "1st Building: " + buildings.get(0).getEmptySlots()
         view.showFirstBldgEmptySlots(string)
     }
 
     fun showSecondBldgSlots() {
-        var string: String = building2.getName() + ": " + building2.getCount()
+        var string: String = "2nd Building: " + buildings.get(1).getEmptySlots()
         view.showSecondBldgEmptySlots(string)
     }
 }

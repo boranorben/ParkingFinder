@@ -6,6 +6,7 @@ class Floor {
     private var slotSize: Int = 8
     var slots = ArrayList<Slots>()
     var floorNum: Int = 0
+    var empty: Int = 0
 
     constructor(floorNum: Int) {
         this.floorNum = floorNum
@@ -17,6 +18,15 @@ class Floor {
                 slots.add(Slots(("B" + this.floorNum + (i + 1)), false))
             }
         }
+    }
+
+    fun getEmptySlots(): Int {
+        for (slot in slots) {
+            if (!slot.isFull()) {
+                empty++
+            }
+        }
+        return empty
     }
 
     fun getSlotsList(): ArrayList<Slots> {

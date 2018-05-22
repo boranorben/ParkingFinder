@@ -9,7 +9,6 @@ import com.example.boranorben.parkingfinder.R
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity(), BuildingView {
-
     lateinit var presenter: HomePresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
