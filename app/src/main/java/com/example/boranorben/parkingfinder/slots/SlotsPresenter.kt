@@ -6,4 +6,8 @@ class SlotsPresenter(val view: SlotsView) {
         view.display()
     }
 
+    fun onParkedBtnClick() {
+        view.openPopup()
+    }
+
 }
