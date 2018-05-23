@@ -34,6 +34,7 @@ class HomePresenter(val view: HomeView) {
         view.displaySecondBldgEmptySlots(string)
     }
 
+    // duplicated code!
     fun getFirstFlrSlots(): String {
         return home.getBuilding(buildingNum - 1).getFloor(0).getEmptySlots().toString()
     }

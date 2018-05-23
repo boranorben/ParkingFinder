@@ -1,5 +1,7 @@
 package com.example.boranorben.parkingfinder.floor
 
+import com.example.boranorben.parkingfinder.slots.Slots
+
 class FloorPresenter(val view: FloorView) {
     lateinit var floor: Floor
     var floorNum: Int = 0
@@ -33,7 +35,11 @@ class FloorPresenter(val view: FloorView) {
         view.navigateToNextAct(floorNum)
     }
 
-    fun getSlots(): String {
+    fun getEmptySlots(): String {
         return floor.getEmptySlots().toString()
+    }
+
+    fun getSlots(): ArrayList<Slots> {
+        return floor.getAllSlots()
     }
 }

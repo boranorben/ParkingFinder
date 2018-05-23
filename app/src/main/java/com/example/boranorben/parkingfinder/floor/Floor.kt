@@ -10,7 +10,7 @@ class Floor {
 
     constructor(floorNum: Int) {
         this.floorNum = floorNum
-        for (i in 1..slotSize) {
+        for (i in 0..slotSize - 1) {
             if (i % 2 == 0) {
                 slots.add(Slots(("A" + this.floorNum + (i + 1)), false))
             } else {
@@ -27,5 +27,9 @@ class Floor {
             }
         }
         return empty
+    }
+
+    fun getAllSlots(): ArrayList<Slots> {
+        return this.slots
     }
 }

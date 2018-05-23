@@ -4,12 +4,15 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import com.example.boranorben.parkingfinder.R
+import com.example.boranorben.parkingfinder.slots.Slots
 import com.example.boranorben.parkingfinder.slots.SlotsActivity
 import kotlinx.android.synthetic.main.activity_floor.*
 
 class FloorActivity : AppCompatActivity(), FloorView {
     lateinit var presenter: FloorPresenter
+    var buttonList: ArrayList<Button> = ArrayList()
     var buildingNum: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,6 +38,13 @@ class FloorActivity : AppCompatActivity(), FloorView {
         presenter.onForthFlrBtnClicked()
     }
 
+    override fun addButton() {
+        buttonList.add(firstFlrBtn)
+        buttonList.add(secondFlrBtn)
+        buttonList.add(thirdFlrBtn)
+        buttonList.add(forthFlrBtn)
+    }
+
     override fun display() {
         val extras: Bundle = intent.extras
         val building: String = extras.getString("buildingNumber")
@@ -55,7 +65,8 @@ class FloorActivity : AppCompatActivity(), FloorView {
         val extras = Bundle()
         extras.putString("buildingNumber", buildingNum)
         extras.putString("floorNumber", value.toString())
-        extras.putString("emptySlots", presenter.getSlots())
+        extras.putString("emptySlots", presenter.getEmptySlots())
+        extras.putParcelableArrayList("slotsList", presenter.getSlots())
         intent.putExtras(extras)
         startActivity(intent)
     }

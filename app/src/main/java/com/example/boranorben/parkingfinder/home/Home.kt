@@ -2,7 +2,7 @@ package com.example.boranorben.parkingfinder.home
 
 class Home {
     private var buildingSize = 2
-    lateinit var buildings: ArrayList<Building>
+    var buildings: ArrayList<Building>
 
     constructor() {
         buildings = ArrayList()
