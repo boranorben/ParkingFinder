@@ -8,9 +8,14 @@ class Home {
         for (i in 1..buildingSize) {
             buildings.add(Building(i))
         }
+        randomParking()
     }
 
     fun getBuilding(i: Int): Building {
         return buildings.get(i)
+    }
+
+    fun randomParking() {
+        buildings[0].getFloor()[0].getAllSlots()[0].setFull()
     }
 }

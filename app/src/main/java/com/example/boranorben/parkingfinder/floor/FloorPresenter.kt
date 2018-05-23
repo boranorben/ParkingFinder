@@ -1,5 +1,6 @@
 package com.example.boranorben.parkingfinder.floor
 
+import com.example.boranorben.parkingfinder.home.Building
 import com.example.boranorben.parkingfinder.slots.Slots
 
 class FloorPresenter(val view: FloorView) {

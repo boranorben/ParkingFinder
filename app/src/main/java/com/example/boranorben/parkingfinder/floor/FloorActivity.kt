@@ -52,6 +52,7 @@ class FloorActivity : AppCompatActivity(), FloorView {
         for (floor in floorList) {
             println(floor.getEmptySlots())
         }
+        presenter
         buildingNum = building
         bldgNumber.text = "Building: " + building
         for (i in 0..(floorList.size - 1)) {
@@ -74,5 +75,5 @@ class FloorActivity : AppCompatActivity(), FloorView {
         intent.putExtras(extras)
         startActivity(intent)
     }
-
+    
 }

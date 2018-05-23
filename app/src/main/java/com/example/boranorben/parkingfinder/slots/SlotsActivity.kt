@@ -1,6 +1,7 @@
 package com.example.boranorben.parkingfinder.slots
 
 import android.content.Intent
+import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -12,6 +13,7 @@ import kotlinx.android.synthetic.main.activity_slots.*
 class SlotsActivity : AppCompatActivity(), SlotsView{
     private lateinit var presenter: SlotsPresenter
     private var slotTextList: ArrayList<TextView> = ArrayList()
+    private var slotsList: ArrayList<Slots> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,11 +42,19 @@ class SlotsActivity : AppCompatActivity(), SlotsView{
         val building: String = extras.getString("buildingNumber")
         val floor: String = extras.getString("floorNumber")
         val empty: String = extras.getString("emptySlots")
-        val slotsList: ArrayList<Slots> = extras.getParcelableArrayList<Slots>("slotsList")
+        slotsList = extras.getParcelableArrayList<Slots>("slotsList")
         location.text = "Building: " + building + ", Floor: " + floor
         avaliableSlots.text = "Avaliable Slots: " + empty
+    }
+
+    override fun displayStatus() {
         for (i in 0..(slotsList.size - 1)) {
-            slotTextList.get(i).text = slotsList.get(i).getId()
+            slotTextList[i].text = slotsList.get(i).getId()
+            if (slotsList[i].isFull()) {
+                slotTextList[i].setTextColor(Color.RED)
+            } else {
+                slotTextList[i].setTextColor(Color.GREEN)
+            }
         }
     }
 

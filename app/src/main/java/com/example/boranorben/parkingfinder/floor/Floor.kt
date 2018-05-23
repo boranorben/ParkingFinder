@@ -12,11 +12,13 @@ class Floor() : Parcelable {
 
     constructor(floorNum: Int) : this() {
         this.floorNum = floorNum
-        for (i in 0..slotSize - 1) {
-            if (i % 2 == 0) {
-                slots.add(Slots(("A" + this.floorNum + (i + 1)), false))
+        var j: Int = 1
+        var k: Int = 1
+        for (i in 1..slotSize) {
+            if (i < 5) {
+                slots.add(Slots(("A" + this.floorNum + j++), false))
             } else {
-                slots.add(Slots(("B" + this.floorNum + (i + 1)), false))
+                slots.add(Slots(("B" + this.floorNum + k++), false))
             }
         }
     }
