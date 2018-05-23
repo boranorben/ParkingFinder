@@ -16,9 +16,9 @@ class Floor() : Parcelable {
         var k: Int = 1
         for (i in 1..slotSize) {
             if (i < 5) {
-                slots.add(Slots(("A" + this.floorNum + j++), false))
+                slots.add(Slots(("A" + this.floorNum + j++), 0))
             } else {
-                slots.add(Slots(("B" + this.floorNum + k++), false))
+                slots.add(Slots(("B" + this.floorNum + k++), 0))
             }
         }
     }

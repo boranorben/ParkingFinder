@@ -13,6 +13,8 @@ import kotlinx.android.synthetic.main.activity_slots.*
 class SlotsActivity : AppCompatActivity(), SlotsView{
     private lateinit var presenter: SlotsPresenter
     private var slotTextList: ArrayList<TextView> = ArrayList()
+    private lateinit var idArray: ArrayList<String>
+    private lateinit var statusArray: ArrayList<Int>
     private var slotsList: ArrayList<Slots> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,12 +41,19 @@ class SlotsActivity : AppCompatActivity(), SlotsView{
 
     override fun display() {
         val extras: Bundle = intent.extras
-        val building: String = extras.getString("buildingNumber")
-        val floor: String = extras.getString("floorNumber")
-        val empty: String = extras.getString("emptySlots")
-        slotsList = extras.getParcelableArrayList<Slots>("slotsList")
-        location.text = "Building: " + building + ", Floor: " + floor
+        val buildingNum: Int = extras.getInt("buildingNumber")
+        val floorNum: Int = extras.getInt("floorNumber")
+        val empty: Int = extras.getInt("emptySlots")
+        idArray = extras.getStringArrayList("idArray")
+        statusArray = extras.getIntegerArrayList("statusArray")
+        location.text = "Building: " + buildingNum + ", Floor: " + floorNum
         avaliableSlots.text = "Avaliable Slots: " + empty
+    }
+
+    override fun addSlotsList() {
+        for (i in 0..7) {
+            slotsList.add(Slots(idArray[i], statusArray[i]))
+        }
     }
 
     override fun displayStatus() {

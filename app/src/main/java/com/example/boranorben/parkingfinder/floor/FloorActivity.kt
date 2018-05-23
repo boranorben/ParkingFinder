@@ -13,7 +13,8 @@ import kotlinx.android.synthetic.main.activity_floor.*
 class FloorActivity : AppCompatActivity(), FloorView {
     private lateinit var presenter: FloorPresenter
     private var buttonList: ArrayList<Button> = ArrayList()
-    private var buildingNum: String = ""
+    private lateinit var floorList: ArrayList<Floor>
+    private var buildingNum: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,12 +48,8 @@ class FloorActivity : AppCompatActivity(), FloorView {
 
     override fun display() {
         val extras: Bundle = intent.extras
-        val building: String = extras.getString("buildingNumber")
-        val floorList: ArrayList<Floor> = extras.getParcelableArrayList("floorsList")
-        for (floor in floorList) {
-            println(floor.getEmptySlots())
-        }
-        presenter
+        val building: Int = extras.getInt("buildingNumber")
+        floorList = extras.getParcelableArrayList("floorsList")
         buildingNum = building
         bldgNumber.text = "Building: " + building
         for (i in 0..(floorList.size - 1)) {
@@ -66,14 +63,16 @@ class FloorActivity : AppCompatActivity(), FloorView {
     }
 
     override fun navigateToNextAct(value: Int) {
+//        presenter.getFloorFromList(value, floorList)
         val intent = Intent(this, SlotsActivity::class.java)
         val extras = Bundle()
-        extras.putString("buildingNumber", buildingNum)
-        extras.putString("floorNumber", value.toString())
-        extras.putString("emptySlots", presenter.getEmptySlots())
-        extras.putParcelableArrayList("slotsList", presenter.getSlots())
+        extras.putInt("buildingNumber", buildingNum)
+        extras.putInt("floorNumber", value)
+        extras.putInt("emptySlots", presenter.getEmptySlots())
+        extras.putStringArrayList("idArray", presenter.getSlotId())
+        extras.putIntegerArrayList("statusArray", presenter.getSlotStatus())
         intent.putExtras(extras)
         startActivity(intent)
     }
-    
+
 }

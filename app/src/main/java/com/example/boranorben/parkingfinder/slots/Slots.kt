@@ -1,53 +1,33 @@
 package com.example.boranorben.parkingfinder.slots
 
-import android.os.Parcel
-import android.os.Parcelable
-
-class Slots() : Parcelable {
+class Slots {
     private var slotId: String = ""
-    private var full: Boolean = false
+    private var full: Int = 0
 
-    constructor(id: String, full: Boolean) : this() {
+    constructor(id: String, full: Int) {
         this.slotId = id
         this.full = full
 //        println("id: " + this.slotId + " is full?: " + this.full)
     }
 
     fun isFull(): Boolean {
-        return this.full
+        if (this.full == 1) {
+            return true
+        } else {
+            false
+        }
+        return false
     }
 
     fun setFull() {
-        this.full = true
+        this.full = 1
+    }
+
+    fun getFull(): Int {
+        return this.full
     }
 
     fun getId(): String {
         return this.slotId
     }
-
-    constructor(parcel: Parcel) : this() {
-        slotId = parcel.readString()
-        full = parcel.readByte() != 0.toByte()
-    }
-
-    companion object CREATOR : Parcelable.Creator<Slots> {
-        override fun createFromParcel(parcel: Parcel): Slots {
-            return Slots(parcel)
-        }
-
-        override fun newArray(size: Int): Array<Slots?> {
-            return arrayOfNulls(size)
-        }
-    }
-
-    override fun writeToParcel(dest: Parcel?, flags: Int) {
-        dest?.writeString(this.slotId)
-        dest?.writeByte((if (this.full) 1 else 0).toByte());
-    }
-
-    override fun describeContents(): Int {
-        return 0
-    }
-
-
 }

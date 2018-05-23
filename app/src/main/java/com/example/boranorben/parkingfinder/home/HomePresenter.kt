@@ -27,12 +27,12 @@ class HomePresenter(val view: HomeView) {
     }
 
     private fun displayFirstBldgSlots() {
-        var string: String = "1st Building: " + home.getBuilding(0).getEmptySlots()
+        var string: String = "1st Building: " + home.getBuilding(0).getBldgEmptySlots()
         view.displayFirstBldgEmptySlots(string)
     }
 
     private fun displaySecondBldgSlots() {
-        var string: String = "2nd Building: " + home.getBuilding(1).getEmptySlots()
+        var string: String = "2nd Building: " + home.getBuilding(1).getBldgEmptySlots()
         view.displaySecondBldgEmptySlots(string)
     }
 

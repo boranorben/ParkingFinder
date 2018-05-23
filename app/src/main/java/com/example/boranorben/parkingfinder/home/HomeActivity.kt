@@ -29,7 +29,7 @@ class HomeActivity : AppCompatActivity(), HomeView {
     override fun navigateToNextAct(value: Int) {
         val intent = Intent(this, FloorActivity::class.java)
         val extras = Bundle()
-        extras.putString("buildingNumber", value.toString())
+        extras.putInt("buildingNumber", value)
         extras.putParcelableArrayList("floorsList", presenter.getFloor())
         intent.putExtras(extras)
         startActivity(intent)

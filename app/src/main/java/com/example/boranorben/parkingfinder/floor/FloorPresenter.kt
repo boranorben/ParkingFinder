@@ -1,6 +1,5 @@
 package com.example.boranorben.parkingfinder.floor
 
-import com.example.boranorben.parkingfinder.home.Building
 import com.example.boranorben.parkingfinder.slots.Slots
 
 class FloorPresenter(val view: FloorView) {
@@ -37,11 +36,31 @@ class FloorPresenter(val view: FloorView) {
         view.navigateToNextAct(floorNum)
     }
 
-    fun getEmptySlots(): String {
-        return floor.getEmptySlots().toString()
+    fun getEmptySlots(): Int {
+        return floor.getEmptySlots()
     }
 
-    fun getSlots(): ArrayList<Slots> {
-        return floor.getAllSlots()
+    fun getSlotId(): ArrayList<String> {
+        var idArray: ArrayList<String> = ArrayList(8)
+        println(floor.getEmptySlots())
+        for (i in 0..7) {
+            println(floor.getAllSlots()[i].getId())
+        }
+        for (i in 0..7) {
+            idArray.add(floor.getAllSlots()[i].getId())
+        }
+        return idArray
     }
+
+    fun getSlotStatus(): ArrayList<Int> {
+        var statusArray: ArrayList<Int> = ArrayList(8)
+        for (i in 0..7) {
+            statusArray.add(floor.getAllSlots()[i].getFull())
+        }
+        return statusArray
+    }
+
+//    fun getFloorFromList(i: Int, list: ArrayList<Floor>) {
+//        this.floor = list[i - 1]
+//    }
 }
