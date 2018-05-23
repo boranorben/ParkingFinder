@@ -1,17 +1,13 @@
 package com.example.boranorben.parkingfinder.home
 
-class HomePresenter(val view: BuildingView) {
-    private var buildingSize = 2
-    lateinit var buildings: ArrayList<Building>
+class HomePresenter(val view: HomeView) {
     var buildingNum: Int = 0
+    lateinit var home: Home
 
     fun start() {
-        buildings = ArrayList()
-        for (i in 1..buildingSize) {
-            buildings.add(Building(i))
-        }
-        showFirstBldgSlots()
-        showSecondBldgSlots()
+        home = Home()
+        displayFirstBldgSlots()
+        displaySecondBldgSlots()
     }
 
     fun onFirstBldgBtnClicked() {
@@ -24,17 +20,33 @@ class HomePresenter(val view: BuildingView) {
         setBuilding()
     }
 
-    fun setBuilding() {
+    private fun setBuilding() {
         view.navigateToNextAct(buildingNum);
     }
 
-    fun showFirstBldgSlots() {
-        var string: String = "1st Building: " + buildings.get(0).getEmptySlots()
-        view.showFirstBldgEmptySlots(string)
+    private fun displayFirstBldgSlots() {
+        var string: String = "1st Building: " + home.getBuilding(0).getEmptySlots()
+        view.displayFirstBldgEmptySlots(string)
     }
 
-    fun showSecondBldgSlots() {
-        var string: String = "2nd Building: " + buildings.get(1).getEmptySlots()
-        view.showSecondBldgEmptySlots(string)
+    private fun displaySecondBldgSlots() {
+        var string: String = "2nd Building: " + home.getBuilding(1).getEmptySlots()
+        view.displaySecondBldgEmptySlots(string)
+    }
+
+    fun getFirstFlrSlots(): String {
+        return home.getBuilding(buildingNum - 1).getFloor(0).getEmptySlots().toString()
+    }
+
+    fun getSecondFlrSlots(): String {
+        return home.getBuilding(buildingNum - 1).getFloor(1).getEmptySlots().toString()
+    }
+
+    fun getThirdFlrSlots(): String {
+        return home.getBuilding(buildingNum - 1).getFloor(2).getEmptySlots().toString()
+    }
+
+    fun getForthFlrSlots(): String {
+        return home.getBuilding(buildingNum - 1).getFloor(3).getEmptySlots().toString()
     }
 }

@@ -8,7 +8,7 @@ import com.example.boranorben.parkingfinder.floor.FloorActivity
 import com.example.boranorben.parkingfinder.R
 import kotlinx.android.synthetic.main.activity_home.*
 
-class HomeActivity : AppCompatActivity(), BuildingView {
+class HomeActivity : AppCompatActivity(), HomeView {
     lateinit var presenter: HomePresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,17 +28,21 @@ class HomeActivity : AppCompatActivity(), BuildingView {
 
     override fun navigateToNextAct(value: Int) {
         val intent = Intent(this, FloorActivity::class.java)
-        intent.putExtra("buildingNumber", value.toString())
+        val extras = Bundle()
+        extras.putString("buildingNumber", value.toString())
+        extras.putString("firstFlrSlots", presenter.getFirstFlrSlots())
+        extras.putString("secondFlrSlots", presenter.getSecondFlrSlots())
+        extras.putString("thirdFlrSlots", presenter.getThirdFlrSlots())
+        extras.putString("forthFlrSlots", presenter.getForthFlrSlots())
+        intent.putExtras(extras)
         startActivity(intent)
     }
 
-    override fun showFirstBldgEmptySlots(string: String) {
+    override fun displayFirstBldgEmptySlots(string: String) {
         firstBldgBtn.text = string
     }
 
-    override fun showSecondBldgEmptySlots(string: String) {
+    override fun displaySecondBldgEmptySlots(string: String) {
         secondBldgBtn.text = string
     }
-
-
 }

@@ -16,6 +16,10 @@ class Building {
         }
     }
 
+    fun getFloor(i: Int): Floor {
+        return this.floors.get(i)
+    }
+
     fun getEmptySlots(): Int {
         for (floor in floors) {
             empty += floor.getEmptySlots()
