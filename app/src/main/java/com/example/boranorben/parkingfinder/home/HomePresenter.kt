@@ -1,8 +1,10 @@
 package com.example.boranorben.parkingfinder.home
 
+import com.example.boranorben.parkingfinder.floor.Floor
+
 class HomePresenter(val view: HomeView) {
-    var buildingNum: Int = 0
-    lateinit var home: Home
+    private var buildingNum: Int = 0
+    private lateinit var home: Home
 
     fun start() {
         home = Home()
@@ -34,20 +36,7 @@ class HomePresenter(val view: HomeView) {
         view.displaySecondBldgEmptySlots(string)
     }
 
-    // duplicated code!
-    fun getFirstFlrSlots(): String {
-        return home.getBuilding(buildingNum - 1).getFloor(0).getEmptySlots().toString()
-    }
-
-    fun getSecondFlrSlots(): String {
-        return home.getBuilding(buildingNum - 1).getFloor(1).getEmptySlots().toString()
-    }
-
-    fun getThirdFlrSlots(): String {
-        return home.getBuilding(buildingNum - 1).getFloor(2).getEmptySlots().toString()
-    }
-
-    fun getForthFlrSlots(): String {
-        return home.getBuilding(buildingNum - 1).getFloor(3).getEmptySlots().toString()
+    fun getFloor(): ArrayList<Floor> {
+        return home.getBuilding(buildingNum - 1).getFloor()
     }
 }

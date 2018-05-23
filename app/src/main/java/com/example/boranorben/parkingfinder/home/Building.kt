@@ -4,9 +4,9 @@ import com.example.boranorben.parkingfinder.floor.Floor
 
 class Building {
     private var buildingSize: Int = 4
-    var floors = ArrayList<Floor>()
-    var buildingNum: Int = 0
-    var empty = 0
+    private var floors = ArrayList<Floor>()
+    private var buildingNum: Int = 0
+    private var empty = 0
 
     constructor(buildingNum: Int) {
         this.buildingNum = buildingNum
@@ -16,8 +16,8 @@ class Building {
         }
     }
 
-    fun getFloor(i: Int): Floor {
-        return this.floors.get(i)
+    fun getFloor(): ArrayList<Floor> {
+        return this.floors
     }
 
     fun getEmptySlots(): Int {

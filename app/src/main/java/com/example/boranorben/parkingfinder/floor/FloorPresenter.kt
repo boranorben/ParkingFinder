@@ -3,10 +3,11 @@ package com.example.boranorben.parkingfinder.floor
 import com.example.boranorben.parkingfinder.slots.Slots
 
 class FloorPresenter(val view: FloorView) {
-    lateinit var floor: Floor
-    var floorNum: Int = 0
+    private lateinit var floor: Floor
+    private var floorNum: Int = 0
 
     fun start() {
+        view.addButton()
         view.display()
     }
 

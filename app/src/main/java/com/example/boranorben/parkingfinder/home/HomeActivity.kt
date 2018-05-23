@@ -9,7 +9,7 @@ import com.example.boranorben.parkingfinder.R
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity(), HomeView {
-    lateinit var presenter: HomePresenter
+    private lateinit var presenter: HomePresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,10 +30,7 @@ class HomeActivity : AppCompatActivity(), HomeView {
         val intent = Intent(this, FloorActivity::class.java)
         val extras = Bundle()
         extras.putString("buildingNumber", value.toString())
-        extras.putString("firstFlrSlots", presenter.getFirstFlrSlots())
-        extras.putString("secondFlrSlots", presenter.getSecondFlrSlots())
-        extras.putString("thirdFlrSlots", presenter.getThirdFlrSlots())
-        extras.putString("forthFlrSlots", presenter.getForthFlrSlots())
+        extras.putParcelableArrayList("floorsList", presenter.getFloor())
         intent.putExtras(extras)
         startActivity(intent)
     }

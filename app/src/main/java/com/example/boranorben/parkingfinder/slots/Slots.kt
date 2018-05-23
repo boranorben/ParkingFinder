@@ -4,8 +4,8 @@ import android.os.Parcel
 import android.os.Parcelable
 
 class Slots() : Parcelable {
-    var slotId: String = ""
-    var full: Boolean = false
+    private var slotId: String = ""
+    private var full: Boolean = false
 
     constructor(id: String, full: Boolean) : this() {
         this.slotId = id

@@ -10,8 +10,8 @@ import com.example.boranorben.parkingfinder.popup.PopupActivity
 import kotlinx.android.synthetic.main.activity_slots.*
 
 class SlotsActivity : AppCompatActivity(), SlotsView{
-    lateinit var presenter: SlotsPresenter
-    var slotTextList: ArrayList<TextView> = ArrayList()
+    private lateinit var presenter: SlotsPresenter
+    private var slotTextList: ArrayList<TextView> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
