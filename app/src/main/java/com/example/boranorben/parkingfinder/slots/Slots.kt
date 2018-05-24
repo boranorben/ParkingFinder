@@ -1,13 +1,21 @@
 package com.example.boranorben.parkingfinder.slots
 
-class Slots {
+import android.os.Parcel
+import android.os.Parcelable
+
+class Slots() : Parcelable {
+
     private var slotId: String = ""
     private var full: Int = 0
 
-    constructor(id: String, full: Int) {
+    constructor(parcel: Parcel) : this() {
+        slotId = parcel.readString()
+        full = parcel.readInt()
+    }
+
+    constructor(id: String, full: Int) : this() {
         this.slotId = id
         this.full = full
-//        println("id: " + this.slotId + " is full?: " + this.full)
     }
 
     fun isFull(): Boolean {
@@ -29,5 +37,24 @@ class Slots {
 
     fun getId(): String {
         return this.slotId
+    }
+
+    override fun writeToParcel(dest: Parcel?, flags: Int) {
+        dest?.writeString(this.slotId)
+        dest?.writeInt(this.full)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<Slots> {
+        override fun createFromParcel(parcel: Parcel): Slots {
+            return Slots(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Slots?> {
+            return newArray(size)
+        }
     }
 }

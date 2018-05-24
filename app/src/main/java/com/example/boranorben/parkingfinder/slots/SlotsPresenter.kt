@@ -6,7 +6,6 @@ class SlotsPresenter(val view: SlotsView) {
     fun start() {
         view.addTextView()
         view.display()
-        view.addSlotsList()
         view.displayStatus()
     }
 

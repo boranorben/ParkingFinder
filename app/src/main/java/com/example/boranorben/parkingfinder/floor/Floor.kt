@@ -24,6 +24,7 @@ class Floor() : Parcelable {
     }
 
     fun getEmptySlots(): Int {
+        empty = 0
         for (slot in slots) {
             if (!slot.isFull()) {
                 empty++
@@ -38,12 +39,14 @@ class Floor() : Parcelable {
 
     constructor(parcel: Parcel) : this() {
         slotSize = parcel.readInt()
+        parcel.readTypedList(slots, Slots.CREATOR)
         floorNum = parcel.readInt()
         empty = parcel.readInt()
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(slotSize)
+        parcel.writeTypedList(slots)
         parcel.writeInt(floorNum)
         parcel.writeInt(empty)
     }
@@ -58,7 +61,7 @@ class Floor() : Parcelable {
         }
 
         override fun newArray(size: Int): Array<Floor?> {
-            return arrayOfNulls(size)
+            return newArray(size)
         }
     }
 }

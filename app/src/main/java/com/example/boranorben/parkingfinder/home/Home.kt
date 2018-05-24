@@ -1,14 +1,16 @@
 package com.example.boranorben.parkingfinder.home
 
+import java.util.*
+
 class Home {
     private var buildingSize = 2
     private var buildings: ArrayList<Building> = ArrayList()
+    private val random = Random()
 
     constructor() {
         for (i in 1..buildingSize) {
             buildings.add(Building(i))
         }
-        randomParking()
     }
 
     fun getBuilding(i: Int): Building {
@@ -16,6 +18,16 @@ class Home {
     }
 
     fun randomParking() {
-        buildings[0].getFloor()[0].getAllSlots()[0].setFull()
+        val cars: Int = rand(20, 64)
+        for (i in 0..cars) {
+            val bldg: Int = rand(0, 2)
+            val flr: Int = rand(0, 4)
+            val slots: Int = rand(0, 8)
+            buildings[bldg].getFloor()[flr].getAllSlots()[slots].setFull()
+        }
+    }
+
+    fun rand(from: Int, to: Int) : Int {
+        return random.nextInt(to - from) + from
     }
 }

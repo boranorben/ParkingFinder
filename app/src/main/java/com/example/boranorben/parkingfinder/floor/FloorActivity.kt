@@ -63,14 +63,13 @@ class FloorActivity : AppCompatActivity(), FloorView {
     }
 
     override fun navigateToNextAct(value: Int) {
-//        presenter.getFloorFromList(value, floorList)
+        presenter.getFloorFromList(value, floorList)
         val intent = Intent(this, SlotsActivity::class.java)
         val extras = Bundle()
         extras.putInt("buildingNumber", buildingNum)
         extras.putInt("floorNumber", value)
         extras.putInt("emptySlots", presenter.getEmptySlots())
-        extras.putStringArrayList("idArray", presenter.getSlotId())
-        extras.putIntegerArrayList("statusArray", presenter.getSlotStatus())
+        extras.putParcelableArrayList("slots", presenter.getSlots())
         intent.putExtras(extras)
         startActivity(intent)
     }

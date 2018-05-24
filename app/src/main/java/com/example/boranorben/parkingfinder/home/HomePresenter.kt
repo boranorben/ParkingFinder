@@ -8,6 +8,7 @@ class HomePresenter(val view: HomeView) {
 
     fun start() {
         home = Home()
+        randomSetFullSlots()
         displayFirstBldgSlots()
         displaySecondBldgSlots()
     }
@@ -38,5 +39,9 @@ class HomePresenter(val view: HomeView) {
 
     fun getFloor(): ArrayList<Floor> {
         return home.getBuilding(buildingNum - 1).getFloor()
+    }
+
+    fun randomSetFullSlots() {
+        home.randomParking()
     }
 }

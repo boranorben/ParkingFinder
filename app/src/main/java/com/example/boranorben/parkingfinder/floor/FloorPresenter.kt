@@ -32,7 +32,6 @@ class FloorPresenter(val view: FloorView) {
     }
 
     private fun setFloor() {
-        floor = Floor(floorNum)
         view.navigateToNextAct(floorNum)
     }
 
@@ -40,27 +39,11 @@ class FloorPresenter(val view: FloorView) {
         return floor.getEmptySlots()
     }
 
-    fun getSlotId(): ArrayList<String> {
-        var idArray: ArrayList<String> = ArrayList(8)
-        println(floor.getEmptySlots())
-        for (i in 0..7) {
-            println(floor.getAllSlots()[i].getId())
-        }
-        for (i in 0..7) {
-            idArray.add(floor.getAllSlots()[i].getId())
-        }
-        return idArray
+    fun getSlots(): ArrayList<Slots> {
+        return floor.getAllSlots()
     }
 
-    fun getSlotStatus(): ArrayList<Int> {
-        var statusArray: ArrayList<Int> = ArrayList(8)
-        for (i in 0..7) {
-            statusArray.add(floor.getAllSlots()[i].getFull())
-        }
-        return statusArray
+    fun getFloorFromList(i: Int, list: ArrayList<Floor>) {
+        this.floor = list[i - 1]
     }
-
-//    fun getFloorFromList(i: Int, list: ArrayList<Floor>) {
-//        this.floor = list[i - 1]
-//    }
 }

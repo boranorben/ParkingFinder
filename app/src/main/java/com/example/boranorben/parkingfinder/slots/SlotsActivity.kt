@@ -44,16 +44,9 @@ class SlotsActivity : AppCompatActivity(), SlotsView{
         val buildingNum: Int = extras.getInt("buildingNumber")
         val floorNum: Int = extras.getInt("floorNumber")
         val empty: Int = extras.getInt("emptySlots")
-        idArray = extras.getStringArrayList("idArray")
-        statusArray = extras.getIntegerArrayList("statusArray")
+        slotsList = extras.getParcelableArrayList("slots")
         location.text = "Building: " + buildingNum + ", Floor: " + floorNum
         avaliableSlots.text = "Avaliable Slots: " + empty
-    }
-
-    override fun addSlotsList() {
-        for (i in 0..7) {
-            slotsList.add(Slots(idArray[i], statusArray[i]))
-        }
     }
 
     override fun displayStatus() {
