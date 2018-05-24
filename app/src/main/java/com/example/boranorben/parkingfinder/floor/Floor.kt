@@ -6,7 +6,7 @@ import com.example.boranorben.parkingfinder.slots.Slots
 
 class Floor() : Parcelable {
     private var slotSize: Int = 8
-    private var slots = ArrayList<Slots>()
+    private var slots: ArrayList<Slots> = ArrayList()
     private var floorNum: Int = 0
     private var empty: Int = 0
 

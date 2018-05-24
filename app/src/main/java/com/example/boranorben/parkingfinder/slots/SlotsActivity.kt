@@ -13,8 +13,6 @@ import kotlinx.android.synthetic.main.activity_slots.*
 class SlotsActivity : AppCompatActivity(), SlotsView{
     private lateinit var presenter: SlotsPresenter
     private var slotTextList: ArrayList<TextView> = ArrayList()
-    private lateinit var idArray: ArrayList<String>
-    private lateinit var statusArray: ArrayList<Int>
     private var slotsList: ArrayList<Slots> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +23,7 @@ class SlotsActivity : AppCompatActivity(), SlotsView{
     }
 
     fun parkedBtnClicked(view: View) {
-        presenter.onParkedBtnClick()
+        presenter.onParkedBtnClicked()
     }
 
     override fun addTextView() {

@@ -1,7 +1,6 @@
 package com.example.boranorben.parkingfinder.slots
 
 class SlotsPresenter(val view: SlotsView) {
-    private lateinit var slot: Slots
 
     fun start() {
         view.addTextView()
@@ -9,7 +8,7 @@ class SlotsPresenter(val view: SlotsView) {
         view.displayStatus()
     }
 
-    fun onParkedBtnClick() {
+    fun onParkedBtnClicked() {
         view.openPopup()
     }
 

@@ -3,15 +3,15 @@ package com.example.boranorben.parkingfinder.home
 import com.example.boranorben.parkingfinder.floor.Floor
 
 class Building {
-    private var buildingSize: Int = 4
-    private var floors = ArrayList<Floor>()
+    private var floorSize: Int = 4
+    private var floors: ArrayList<Floor> = ArrayList<Floor>()
     private var buildingNum: Int = 0
-    private var empty = 0
+    private var empty: Int = 0
 
     constructor(buildingNum: Int) {
         this.buildingNum = buildingNum
         this.floors = ArrayList()
-        for (i in 0..(buildingSize - 1)) {
+        for (i in 0..(floorSize - 1)) {
             floors.add(Floor(i + 1))
         }
     }
