@@ -19,8 +19,11 @@ class Popup {
             var eH: Int = Integer.parseInt("" + eTime.subSequence(0,2))
             var aM: Int = Integer.parseInt("" + getTime().subSequence(3,5))
             var eM: Int = Integer.parseInt("" + eTime.subSequence(3,5))
-            if (aM > eM) {
-                return ((eH - aH) + 1) * 10
+            if (eH - aH == 0 && eM > aM) { return 10 }
+            else if (eH - aH == 1) {
+                if (eM < aM) { return 10 }
+                else return 20
+            } else if (aM > eM) { return ((eH - aH) + 1) * 10
             } else return (eH - aH)*10
         }
         return 0
